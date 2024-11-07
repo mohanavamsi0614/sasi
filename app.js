@@ -3,6 +3,8 @@ const express = require("express");
 const app = express();
 const Finger = require("./db");
 const nodemailer=require("nodemailer")
+const cors=require("cors")
+app.use(cors())
 const transporter = nodemailer.createTransport({
     service: "outlook",
     auth: {
