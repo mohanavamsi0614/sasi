@@ -21,7 +21,7 @@ app.get("/add/:email/:finger_id/:time", async (req, res) => {
         const finge = await Finger.findOne({ email });
 
         if (finge) {
-            finge.times.push(time);
+            finge.time.push(time);
             await finge.save();
             var welcome = {
                 from: "mohanavamsi14@gmail.com",
