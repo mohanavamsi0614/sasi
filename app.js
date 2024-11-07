@@ -48,7 +48,7 @@ app.get("/add/:email/:finger_id/:time", async (req, res) => {
             res.send("New email created and time added");
         }
     } catch (error) {
-        res.status(500).send("Error processing request: " + error.message);
+        res.status(500).send("Error processing request: " + error);
     }
 });
 
