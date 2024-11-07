@@ -6,9 +6,9 @@ const nodemailer=require("nodemailer")
 const cors=require("cors")
 app.use(cors())
 const transporter = nodemailer.createTransport({
-    service: "outlook",
+    service: "gmail",
     auth: {
-      user: "mohanavamsi16@outlook.com",
+      user: "mohanavamsi14@gmail.com",
       pass: "wken sosx ofjc cqvu",
     },
   });
