@@ -16,7 +16,7 @@ const transporter = nodemailer.createTransport({
 app.use(express.json());
 app.get("/add", async (req, res) => {
     try {
-        const { email, finger_id, time } = req.body;
+        const { email, finger_id, time } = req.params;
 
         const finge = await Finger.findOne({ email });
 
