@@ -1,5 +1,5 @@
 const mongoose=require("mongoose")
-const schema=  monog.Schema({
+const schema=  mongoose.Schema({
     time:[String],
     id:String,
     email:String
