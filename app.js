@@ -15,14 +15,19 @@ const transporter = nodemailer.createTransport({
   });
  
 app.use(express.json());
-app.get("/email",(req,res)=>{
-    const {email}=req.body
-    const user=Finger.findOne({email})
-    if(user){
-    return res.status(200).json(user)
+app.get("/email/:email", async (req, res) => {
+    const { email } = req.params;
+    try {
+      const user = await Finger.findOne({ email });
+      if (user) {
+        return res.status(200).json(user);
+      }
+      res.status(404).json({ data: "error" });
+    } catch (error) {
+      res.status(500).json({ error: "Internal server error" });
     }
-    res.status(404).json({data:"error"})
-})
+  });
+  
 app.get("/",(req,res)=>{
     res.send("hi i am bob 🔥")})
 app.get("/add/:email/:finger_id/:time", async (req, res) => {
