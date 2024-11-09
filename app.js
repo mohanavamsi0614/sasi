@@ -5,6 +5,7 @@ const Finger = require("./db");
 const nodemailer=require("nodemailer")
 const cors=require("cors")
 app.use(cors())
+app.use(express.json())
 const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
@@ -14,6 +15,14 @@ const transporter = nodemailer.createTransport({
   });
  
 app.use(express.json());
+app.get("/email",(req,res)=>{
+    const {email}=req.body
+    const user=Finger.findOne({email})
+    if(user){
+    return res.status(200).json(user)
+    }
+    res.status(404).json({data:"error"})
+})
 app.get("/add/:email/:finger_id/:time", async (req, res) => {
     try {
         const { email, finger_id, time } = req.params;
