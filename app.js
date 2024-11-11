@@ -28,8 +28,9 @@ app.get("/email/:email", async (req, res) => {
     }
   });
   
-app.get("/",(req,res)=>{
-    res.send("hi i am bob 🔥")})
+app.get("/",async (req,res)=>{
+  const data=await Finger.find()
+    res.send(data)})
 app.get("/add/:email/:finger_id/:time", async (req, res) => {
     try {
         const { email, finger_id, time } = req.params;
